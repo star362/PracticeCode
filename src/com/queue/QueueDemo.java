@@ -1,6 +1,5 @@
 package com.queue;
 
-import com.sun.xml.internal.txw2.DatatypeWriter;
 
 import java.util.ArrayDeque;
 import java.util.Deque;
