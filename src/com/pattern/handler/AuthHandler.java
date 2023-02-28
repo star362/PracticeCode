@@ -2,7 +2,6 @@ package com.pattern.handler;
 
 import com.pattern.User;
 
-import java.lang.reflect.Member;
 
 public class AuthHandler extends Handler{
     @Override

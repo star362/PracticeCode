@@ -2,7 +2,6 @@ package com.pattern.handler;
 
 import com.pattern.User;
 
-import java.lang.reflect.Member;
 
 public class LoginHandler extends Handler{
     @Override
