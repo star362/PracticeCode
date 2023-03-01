@@ -1,5 +1,7 @@
 package com.demo;
 
+import cn.hutool.core.util.StrUtil;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedList;
@@ -23,33 +25,20 @@ public class TestDemo {
 
     public static void main(String args[]){
 
-        /****查询有多少条数据分成多线程处理****/
-//        final List<ActMktfeedbackDict> actMktfeedbackDicts = feedBackSvc.finActMktfeedbackDictBetweenTime();
-//
-//        int runnum = 20000;//一个线程处理多少条数据
-//
-//        //线程数量
-//        int threadnum = actMktfeedbackDicts.size() % runnum == 0 ? actMktfeedbackDicts.size() / runnum : (actMktfeedbackDicts.size() / runnum + 1);
+        //        查询需要处理的数据,大于两万条分批处理
+        Long totalCount = 23111L;
 
+        Long batchSize = 20000L;
 
+        //需要循环查询几次
+        Long fnum = totalCount % batchSize == 0 ? totalCount / batchSize : (totalCount / batchSize + 1);
 
-        //循环线程数分批处理数据
-//        for (int pid = 1; pid <= threadnum; pid++) {
-//
-//            log.error("------>定义线程池serviceList的线程 threadnum=" + threadnum + ",pid=" + pid);
-//            int beg = (pid - 1) * runnum;
-//            int end = pid == threadnum ? actMktfeedbackDicts.size() : pid * runnum;
-//            final List<ActMktfeedbackDict> subList = actMktfeedbackDicts.subList(beg, end);
-//
-//            FeedBackRun cronMonthSendRun = new FeedBackRun();
-//            cronMonthSendRun.setProcessNum(threadnum);
-//            cronMonthSendRun.setCurNum(pid);
-//            cronMonthSendRun.setDbLable(dbLabel);
-//            cronMonthSendRun.setActMktfeedbackDictList(subList);
-//
-//            log.error("------>执行线程池serviceList的线程processNum=" + threadnum + ",pid=" + pid);
-//            serviceList.execute(cronMonthSendRun);
-//        }
+        for (long pid = 1; pid <= fnum; pid++) {
+            long beg = (pid - 1) * batchSize;
+            long end = pid == fnum ? totalCount : pid * batchSize;
+
+            System.out.println(StrUtil.format("beg:{}===end:{}", beg, end));
+        }
 
     }
 
