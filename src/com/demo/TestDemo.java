@@ -23,29 +23,34 @@ public class TestDemo {
 
     public static void main(String args[]){
 
-        String str="adchm";
-        final String solve = solve(str);
-        System.out.println(solve);
+        /****查询有多少条数据分成多线程处理****/
+//        final List<ActMktfeedbackDict> actMktfeedbackDicts = feedBackSvc.finActMktfeedbackDictBetweenTime();
+//
+//        int runnum = 20000;//一个线程处理多少条数据
+//
+//        //线程数量
+//        int threadnum = actMktfeedbackDicts.size() % runnum == 0 ? actMktfeedbackDicts.size() / runnum : (actMktfeedbackDicts.size() / runnum + 1);
 
 
 
+        //循环线程数分批处理数据
+//        for (int pid = 1; pid <= threadnum; pid++) {
+//
+//            log.error("------>定义线程池serviceList的线程 threadnum=" + threadnum + ",pid=" + pid);
+//            int beg = (pid - 1) * runnum;
+//            int end = pid == threadnum ? actMktfeedbackDicts.size() : pid * runnum;
+//            final List<ActMktfeedbackDict> subList = actMktfeedbackDicts.subList(beg, end);
+//
+//            FeedBackRun cronMonthSendRun = new FeedBackRun();
+//            cronMonthSendRun.setProcessNum(threadnum);
+//            cronMonthSendRun.setCurNum(pid);
+//            cronMonthSendRun.setDbLable(dbLabel);
+//            cronMonthSendRun.setActMktfeedbackDictList(subList);
+//
+//            log.error("------>执行线程池serviceList的线程processNum=" + threadnum + ",pid=" + pid);
+//            serviceList.execute(cronMonthSendRun);
+//        }
 
     }
 
-    public static String solve (String str) {
-        String rstr="";
-        final char[] chars = str.toCharArray();
-        LinkedList l=new LinkedList();
-        for (char aChar : chars) {
-            l.push(aChar);
-        }
-
-        while (!l.isEmpty()){
-            final Object poll = l.pollLast();
-            rstr+= poll;
-            System.out.println(poll);
-        }
-
-        return rstr;
-    }
 }

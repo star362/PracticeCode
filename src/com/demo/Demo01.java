@@ -1,15 +1,6 @@
 package com.demo;
 
-import com.java8.DateTimeUtils;
-
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+import cn.hutool.core.util.StrUtil;
 
 /**
  * Description: <br>
@@ -20,13 +11,29 @@ import java.util.regex.Pattern;
 public class Demo01 {
 
 
-    private static Matcher Matcherm;
+    public static void main(String[] args) {
+        System.out.println("======");
+        int size = 20000;
+        int snum = 40001;
+        int cs = size % snum == 0 ? 1 : (snum / size) + 1;
+        getPageLimitGroupList(snum,size);
+        System.out.println(cs);
+    }
 
-    public static void main(String[] args) throws ParseException {
+    public static void getPageLimitGroupList(Integer totalCount, Integer batchSizeLimit) {
+        System.out.println(StrUtil.format("这一次处理的总数据条数为 ={} 条, 每一批次处理条数为 ={} 条,现在开始做分批切割处理。", totalCount, batchSizeLimit));
+        int pageNum = totalCount / batchSizeLimit;
+        int surplus = totalCount % batchSizeLimit;
+        if (surplus > 0) {
+            pageNum = pageNum + 1;
+        }
+        for (int i = 0; i < pageNum; i++) {
+            Integer currIndex = i * batchSizeLimit;
+            System.out.println(StrUtil.format("分批切割,第= {}次,每次= {} 条,最终会处理到={}条。", i, batchSizeLimit, currIndex + batchSizeLimit));
 
-        System.out.println(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse("2021-03-04 22:22:22.001233"));
-
-
+        }
+        System.out.println(StrUtil.format("这一次处理的总数据条数为 = {} 条, 每一批次处理条数为 = {} 条,总共切割分成了 = {} 次,一切准备就绪,可以开始批量插入。",
+                totalCount, batchSizeLimit, 11));
     }
 
 }
