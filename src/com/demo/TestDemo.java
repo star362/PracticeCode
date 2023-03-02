@@ -35,9 +35,11 @@ public class TestDemo {
 
         for (long pid = 1; pid <= fnum; pid++) {
             long beg = (pid - 1) * batchSize;
-            long end = pid == fnum ? totalCount : pid * batchSize;
+            long end = pid == fnum ?  totalCount - (pid -1) * batchSize : batchSize ;
+            long end2 = pid == fnum ? totalCount : pid * batchSize;
 
-            System.out.println(StrUtil.format("beg:{}===end:{}", beg, end));
+            System.out.println(StrUtil.format("mysql 分页==beg:{}===end:{}", beg, end));
+            System.out.println(StrUtil.format("数据分组==beg:{}===end:{}", beg, end2));
         }
 
     }
