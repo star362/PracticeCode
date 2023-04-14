@@ -13,11 +13,18 @@ public class Demo01 {
 
     public static void main(String[] args) {
         System.out.println("======");
-        int size = 20000;
-        int snum = 40001;
-        int cs = size % snum == 0 ? 1 : (snum / size) + 1;
-        getPageLimitGroupList(snum,size);
-        System.out.println(cs);
+//        int size = 20000;
+//        int snum = 40001;
+//        int cs = size % snum == 0 ? 1 : (snum / size) + 1;
+//        getPageLimitGroupList(snum,size);
+//        System.out.println(cs);
+
+
+        BooleanLambdaNew booleanLambdaNew = new BooleanLambdaNew();
+        Boolean a1 = booleanLambdaNew.test(()->false);
+        System.out.println(a1);
+
+
     }
 
     public static void getPageLimitGroupList(Integer totalCount, Integer batchSizeLimit) {
