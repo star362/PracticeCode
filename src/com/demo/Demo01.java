@@ -20,9 +20,6 @@ public class Demo01 {
 //        System.out.println(cs);
 
 
-        BooleanLambdaNew booleanLambdaNew = new BooleanLambdaNew();
-        Boolean a1 = booleanLambdaNew.test(()->false);
-        System.out.println(a1);
 
 
     }
